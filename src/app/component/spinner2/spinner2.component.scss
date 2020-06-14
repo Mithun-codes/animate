@@ -1,0 +1,70 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+$length: 100px;
+
+.spinner {
+  height: 250px;
+  width: 250px;
+  padding: 0;
+  margin: 10px;
+  border: 1px solid lightblue;
+}
+
+.spinner1 {
+  #circle1 {
+    fill: white;
+    stroke: darkcyan;
+    stroke-width: 2px;
+    transform-origin: center;
+  }
+  #eclipse {
+    stroke:darkcyan;
+    stroke-width:2;
+    fill: none;
+  }
+  #polygon {
+    stroke:darkcyan;
+    stroke-width:2;
+    fill: none;
+  }
+  #minute {
+    stroke: darkcyan;
+    stroke-width: 2px;
+    transform-origin: center;
+    animation: spin 5s linear infinite;
+  }
+  #second {
+    stroke: darkcyan;
+    stroke-width: 1px;
+    transform-origin: center;
+    animation: spin 2s linear infinite;
+  }
+  #circleCenter {
+    fill: darkcyan;
+    stroke: darkcyan;
+    stroke-width: 2px;
+    transform-origin: center;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
