@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "spinner"
+    }
+  },
+  "defaultProject": "spinner",
+  "cli": {
+    "analytics": false
+  }
 }
