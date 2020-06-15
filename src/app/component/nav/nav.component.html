@@ -1,5 +1,67 @@
-<ul>
-  <li><a [routerLink]="['spinner1']">Spinner1</a></li>
-  <li><a [routerLink]="['spinner2']">Spinner2</a></li>
-  <li><a [routerLink]="['spinner3']">Spinner3</a></li>
-</ul>
+<div class="nav">
+  <ul class="nav-parent">
+    <li><a href="JavaScvript:void(0);">Spinner1</a></li>
+
+    <li><a href="JavaScvript:void(0);">Spinner2</a>
+      <ul class="nav-parent-child left">
+        <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+        <li><a [routerLink]="['spinner2']">Spinner2</a>
+          <ul class="nav-parent-child-child left">
+            <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+            <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+            <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+      </ul>
+    </li>
+
+    <li><a href="JavaScvript:void(0);">Spinner3</a>
+      <ul class="nav-parent-child left">
+        <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+        <li>
+          <a href="JavaScvript:void(0);">Spinner3</a>
+          <ul class="nav-parent-child-child left">
+            <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+            <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+            <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+
+  <ul class="nav-parent">
+    <li><a href="JavaScvript:void(0);">Spinner1</a></li>
+
+    <li><a href="JavaScvript:void(0);">Spinner2</a>
+      <ul class="nav-parent-child right">
+        <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+        <li><a [routerLink]="['spinner2']">Spinner2</a>
+          <ul class="nav-parent-child-child right">
+            <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+            <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+            <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['spinner2']">Spinner2</a></li>
+      </ul>
+    </li>
+
+    <li><a href="JavaScvript:void(0);">Spinner3</a>
+      <ul class="nav-parent-child right">
+        <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+        <li>
+          <a href="JavaScvript:void(0);">Spinner3</a>
+          <ul class="nav-parent-child-child right">
+            <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+            <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+            <li><a [routerLink]="['spinner3']">Spinner3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</div>

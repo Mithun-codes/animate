@@ -1,23 +1,108 @@
-ul {
-  display: flex;
-  list-style: none;
-  padding: 5px 10px;
+@mixin liDesign{
+  background: rgb(45,95,105);
+  background: linear-gradient(0deg, rgba(45,95,105,1) 17%, rgba(9,102,121,1) 42%, rgba(19,56,63,1) 88%);
+  position: relative;
+  & a {
+    text-decoration: none;
+    padding: 8px 16px;
+    display: flex;
+    cursor: pointer;
+    color: lightcyan;
+    justify-content: space-between;
+    &:hover {
+      background: rgb(11,22,24);
+      background: linear-gradient(0deg, rgba(11,22,24,1) 17%, rgba(10,24,27,1) 42%, rgba(1,6,7,1) 88%);
+    }
+  }
 }
 
-li {
-  display: inline-flex;
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#6db3f2+0,54a3ee+50,3690f0+51,1e69de+100;Blue+Gloss+%233 */
-  background: #6db3f2; /* Old browsers */
-  background: -moz-linear-gradient(top,  #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=0 ); /* IE6-9 */
-  padding: 5px;
-  &:not(:first-child) {
-    margin: 1px 0px 1px 10px;
+@mixin ulDesign($display, $position, $flex-direction, $top, $visibility, $opacity, $height, $direction) {
+  display: $display;
+  flex-direction: $flex-direction;
+  height: $height;
+  position: $position;
+  top: $top;
+  visibility: $visibility;
+  opacity: $opacity;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  & > li:hover > &-child {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
   }
-  a {
-    text-decoration: none;
+  @if $direction {
+    @include leftRight;
+  }
+}
+
+@mixin leftRight {
+  .left {
+    left: 100%;
+    perspective: calc(100% - 10px);
+  }
+  .right {
+    right: 100%;
+    perspective: 100px;
+  }
+}
+
+@mixin animateLI {
+  animation-name: subLiAnimate;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+
+  &-parent {
+    @include ulDesign(flex, relative, row, 0, visible, 1, auto, false);
+    & > li {
+      @include liDesign;
+      @include animateLI;
+    }
+    &-child {
+      @include ulDesign(none, absolute, column, 100%, hidden, 0, 0, true);
+      & > li {
+        @include liDesign;
+        @include animateLI;
+      }
+      &-child {
+        @include ulDesign(none, absolute, column, 0, hidden, 0, 0, true);
+        & > li {
+          @include liDesign;
+          @include animateLI;
+        }
+        &-child {
+          @include ulDesign(none, absolute, column, 0, hidden, 0, 0, true);
+          & > li {
+            @include liDesign;
+            @include animateLI;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes subLiAnimate {
+  0% {
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: rotateY(90deg) translateY(-30px);
   }
 
+  100% {
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: rotateY(0deg) translateY(0px);
+  }
 }
