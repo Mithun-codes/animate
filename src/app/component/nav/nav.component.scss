@@ -13,9 +13,6 @@
       background: rgb(11,22,24);
       background: linear-gradient(0deg, rgba(11,22,24,1) 17%, rgba(10,24,27,1) 42%, rgba(1,6,7,1) 88%);
     }
-    //&:not(:only-child):after {
-    //  content: '\2193';
-    //}
   }
 }
 
@@ -30,10 +27,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  & li:hover > &-child {
+  & > li:hover > &-child {
     visibility: visible;
     opacity: 1;
-    animation: subLiAnimate 1s ease-in;
+    display: flex;
   }
   @if $direction {
     @include leftRight;
@@ -43,13 +40,16 @@
 @mixin leftRight {
   .left {
     left: 100%;
-    //& a:after {
-    //  transform: rotate(90deg) !important;
-    //}
   }
   .right {
     right: 100%;
   }
+}
+
+@mixin animateLI {
+  animation-name: subLiAnimate;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
 }
 
 .nav {
@@ -58,27 +58,30 @@
   flex-direction: row;
   position: relative;
   justify-content: space-between;
-  perspective: revert;
+  perspective: 1000px;
   &-parent {
     @include ulDesign(flex, relative, row, 0, visible, 1, auto, false);
-    animation: mainUIanimate 0.5s ease-in;
-    & li {
+    & > li {
       @include liDesign;
+      @include animateLI;
     }
     &-child {
-      @include ulDesign(inline-flex, absolute, column, 100%, hidden, 0, 0, true);
-      & li {
+      @include ulDesign(none, absolute, column, 100%, hidden, 0, 0, true);
+      & > li {
         @include liDesign;
+        @include animateLI;
       }
       &-child {
-        @include ulDesign(inline-flex, absolute, column, 0, hidden, 0, 0, true);
-        & li {
+        @include ulDesign(none, absolute, column, 0, hidden, 0, 0, true);
+        & > li {
           @include liDesign;
+          @include animateLI;
         }
         &-child {
-          @include ulDesign(inline-flex, absolute, column, 0, hidden, 0, 0, true);
-          & li {
+          @include ulDesign(none, absolute, column, 0, hidden, 0, 0, true);
+          & > li {
             @include liDesign;
+            @include animateLI;
           }
         }
       }
@@ -86,37 +89,18 @@
   }
 }
 
-@keyframes mainUIanimate {
-  0% {
-    height: 0;
-    visibility: hidden;
-    opacity: 0;
-  }
-  100% {
-    height: auto;
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-
 @keyframes subLiAnimate {
   0% {
     height: 0;
     visibility: hidden;
     opacity: 0;
-    transform: rotateX(90deg);
+    transform: rotateX(90deg) translateX(30px);
   }
-  50% {
-    height: auto;
-    visibility: visible;
-    opacity: 1;
-    transform: rotateX(0deg);
-  }
+
   100% {
     height: auto;
     visibility: visible;
     opacity: 1;
-    transform: rotateX(0deg);
+    transform: rotateX(0deg) translateX(0px);
   }
 }
