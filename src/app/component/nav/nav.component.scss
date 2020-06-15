@@ -40,11 +40,11 @@
 @mixin leftRight {
   .left {
     left: 100%;
-    perspective: 80%;
+    perspective: calc(100% - 10px);
   }
   .right {
     right: 100%;
-    perspective: 20%;
+    perspective: 100px;
   }
 }
 
@@ -96,13 +96,13 @@
     height: 0;
     visibility: hidden;
     opacity: 0;
-    transform: rotateY(90deg) translateX(30px);
+    transform: rotateY(90deg) translateY(-30px);
   }
 
   100% {
     height: auto;
     visibility: visible;
     opacity: 1;
-    transform: rotateY(0deg) translateX(0px);
+    transform: rotateY(0deg) translateY(0px);
   }
 }
