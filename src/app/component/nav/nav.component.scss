@@ -40,9 +40,11 @@
 @mixin leftRight {
   .left {
     left: 100%;
+    perspective: 80%;
   }
   .right {
     right: 100%;
+    perspective: 20%;
   }
 }
 
@@ -58,7 +60,7 @@
   flex-direction: row;
   position: relative;
   justify-content: space-between;
-  perspective: 1000px;
+
   &-parent {
     @include ulDesign(flex, relative, row, 0, visible, 1, auto, false);
     & > li {
@@ -94,13 +96,13 @@
     height: 0;
     visibility: hidden;
     opacity: 0;
-    transform: rotateX(90deg) translateX(30px);
+    transform: rotateY(90deg) translateX(30px);
   }
 
   100% {
     height: auto;
     visibility: visible;
     opacity: 1;
-    transform: rotateX(0deg) translateX(0px);
+    transform: rotateY(0deg) translateX(0px);
   }
 }
