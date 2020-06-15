@@ -59,7 +59,7 @@ $length: 100px;
   #circle1 {
     fill: none;
     stroke: red;
-    stroke-width: 2px;
+    stroke-width: 6px;
     stroke-dasharray: 110%;
     animation: spin 1s linear infinite;
     transform-origin: center;
@@ -68,25 +68,27 @@ $length: 100px;
   #circle2 {
     fill: none;
     stroke: blue;
-    stroke-width: 2px;
+    stroke-width: 6px;
     stroke-dasharray: 100%;
     animation: spin2 1s linear infinite;
     transform-origin: center;
+    stroke-linecap: round;
   }
 
   #circle3 {
     fill: none;
     stroke: green;
-    stroke-width: 2px;
+    stroke-width: 6px;
     stroke-dasharray: 95%;
     animation: spin 1s linear infinite;
     transform-origin: center;
+    stroke-linecap: round;
   }
 
   #circle4 {
     fill: none;
     stroke: yellow;
-    stroke-width: 2px;
+    stroke-width: 6px;
     stroke-dasharray: 70%;
     animation: spin2 1s linear infinite;
     transform-origin: center;
